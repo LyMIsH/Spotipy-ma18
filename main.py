@@ -22,10 +22,10 @@ def main():
     account_managment.create_playlist("ABC")
 
     artists = search.get_artists()
-    albums = search.get_albums(artists[10].id())
-    top_tracks = search.get_top_artist_tracks(artists[10].id())
+    albums = search.get_albums('2iEvnFsWxR0Syqu2JNopAd')
+    top_tracks = search.get_top_artist_tracks('2iEvnFsWxR0Syqu2JNopAd')
     _ = 0
-    # data.test()
+   # data.test()
 
 
 if __name__ == "__main__":
