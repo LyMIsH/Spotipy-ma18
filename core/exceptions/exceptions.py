@@ -1,0 +1,2 @@
+class ReaderDoesNotExistException(Exception):
+    pass
