@@ -22,8 +22,10 @@ def main():
     account_managment.create_playlist("ABC")
 
     artists = search.get_artists()
-    albums = search.get_albums('2iEvnFsWxR0Syqu2JNopAd')
-    top_tracks = search.get_top_artist_tracks('2iEvnFsWxR0Syqu2JNopAd')
+    s = artists[1].id()
+    albums = search.get_albums(artists[1].id())
+    top_tracks = search.get_top_artist_tracks(artists[1].id())
+    album_tracks = search.get_album_tracks("2usyeZYdUHKlNHKDKgAYSo")
     _ = 0
    # data.test()
 

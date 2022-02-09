@@ -17,4 +17,9 @@ def get_top_artist_tracks(artist_id):
     for album in albums:
         tracks.extend(list(album.tracks.values()))
     tracks.sort(key=lambda track: track.popularity, reverse=True)
+
     return tracks
+
+
+def get_album_tracks(album_id):
+    return list(Data.albums[album_id].tracks.values())
