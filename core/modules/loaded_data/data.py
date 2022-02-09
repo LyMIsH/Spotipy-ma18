@@ -13,7 +13,7 @@ def add_data(album: Album, track: Track, artist_list: list):
     # Album adding
     if album.id() not in Data.albums.keys():
         Data.albums[album.id()] = album
-    Data.albums[album.id()].add_song(track.id())
+    Data.albums[album.id()].add_song(track)
 
     # Track adding
     Data.tracks[track.id()] = track
@@ -22,7 +22,7 @@ def add_data(album: Album, track: Track, artist_list: list):
     for artist in artist_list:
         if artist.id() not in Data.artists.keys():
             Data.artists[artist.id()] = artist
-        Data.artists[artist.id()].add_album(album.id())
+        Data.artists[artist.id()].add_album(album)
 
 
 def get_data():
