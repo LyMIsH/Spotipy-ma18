@@ -20,7 +20,7 @@ def main():
     get_artists_option = FunctionItem("Get artists", print, search.get_artists())
     get_albums_option = FunctionItem("Get album by artist ID", uifunctions.get_artist_albums_console)
     get_album_tracks_option = FunctionItem("Get album tracks by ID", uifunctions.get_album_tracks_console)
-    get_top_tracks_option = FunctionItem("Get top 10 tracks by author ID", uifunctions.get_top_tracks_console)
+    get_top_tracks_option = FunctionItem("Get top 10 tracks by artist ID", uifunctions.get_top_tracks_console)
     main_menu.append_item(create_playlist_option)
     main_menu.append_item(add_track_option)
     main_menu.append_item(get_artists_option)
