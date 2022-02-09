@@ -20,3 +20,7 @@ class PlaylistDoesNotExists(Exception):
 
 class IDNotFound(Exception):
     pass
+
+
+class FreeUserException(Exception):
+    pass
