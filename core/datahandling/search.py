@@ -1,11 +1,25 @@
 from .data import Data
 from core.exceptions import exceptions
+import config
 
 
+premium = False
+FREE_USER_RESULT_LIMIT = config.settings["free_user_result_limit"]
+
+
+def limiter(func):
+    def wrapper(*args, **kwargs):
+        val = func(*args, **kwargs)
+        return val[0:FREE_USER_RESULT_LIMIT] if not premium else val
+    return wrapper
+
+
+@limiter
 def get_artists():
     return list(Data.artists.values())
 
 
+@limiter
 def get_albums(artist_id):
     if artist_id not in Data.artists.keys():
         raise exceptions.IDNotFound(f"No artist match for {artist_id}")
@@ -13,6 +27,7 @@ def get_albums(artist_id):
     return [album.name for album in artist.albums.values()]
 
 
+@limiter
 def get_top_artist_tracks(artist_id):
     if artist_id not in Data.artists.keys():
         raise exceptions.IDNotFound(f"No artist match for {artist_id}")
@@ -26,6 +41,7 @@ def get_top_artist_tracks(artist_id):
     return tracks
 
 
+@limiter
 def get_album_tracks(album_id):
     if album_id not in Data.albums.keys():
         raise exceptions.IDNotFound(f"No album match for {album_id}")
