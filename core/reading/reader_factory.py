@@ -10,8 +10,8 @@ from core.logging import logger
 class JsonReader(Reader):
     @staticmethod
     def load_songs(path):
+        logger.debug(f"Reading json from {path}")
         for filename in glob.glob(os.path.join(path, '*.json')):
-            logger.info(f"Reading json from {filename}")
             with open(os.path.join(path, filename), 'r') as file:  # open in readonly mode
                 # Parse JSON into an object with attributes corresponding to dict keys.
                 json_object = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
@@ -20,5 +20,6 @@ class JsonReader(Reader):
     @staticmethod
     def load_users(path):
         with open(path, "r") as file:
+            logger.debug(f"Reading json from {path}")
             users = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
-
+            parsers.parse_users_json(users)

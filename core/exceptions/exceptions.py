@@ -4,3 +4,7 @@ class ReaderDoesNotExistException(Exception):
 
 class UserNotLoggedInException(Exception):
     pass
+
+
+class UsernameDoesNotExist(Exception):
+    pass

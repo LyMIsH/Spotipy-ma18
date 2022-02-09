@@ -2,27 +2,25 @@ import logging
 import config
 
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-logging.basicConfig(level=logging.DEBUG, filename=config.settings['log_path'], filemode='a',
+logging.basicConfig(level=logging.DEBUG, filename=config.settings['log_path'], filemode='w',
                     format='%(levelname)s: %(name)s - %(asctime)s - %(message)s')
 
 
 def debug(msg):
-    logger.debug(msg)
+    logging.debug(msg)
 
 
 def info(msg):
-    logger.info(msg)
+    logging.info(msg)
 
 
 def warning(msg):
-    logger.warning(msg)
+    logging.warning(msg)
 
 
 def error(msg):
-    logger.error(msg)
+    logging.error(msg)
 
 
 def fatal(msg):
-    logger.fatal(msg)
+    logging.fatal(msg)
