@@ -8,7 +8,7 @@ from core.datahandling import search
 def main():
     reader_factory.JsonReader.load_songs(config.settings["songs_path"])
     reader_factory.JsonReader.load_users(config.settings["users_path"])
-    user = account_managment.login("Ron", "1222222")
+    user = account_managment.login("Atar Mayner", "1222222")
     user.create_playlist("NO")
     tracks = []
     count = 0
