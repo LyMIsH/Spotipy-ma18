@@ -1,5 +1,5 @@
 from core.exceptions import exceptions
-from ..data_handling.data import Data
+from core.datahandling.data import Data
 from core.logging import logger
 from core.modules.base.playlist import Playlist
 

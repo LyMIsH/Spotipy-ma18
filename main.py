@@ -1,8 +1,9 @@
 from core.reading import reader_factory
-from core.modules.data_handling import data
-from core.modules.account import account_managment
+from core.datahandling import data
+from core.account import account_managment
 import config
-from core.modules.data_handling import search
+from core.datahandling import search
+
 
 def main():
     reader_factory.JsonReader.load_songs(config.settings["songs_path"])

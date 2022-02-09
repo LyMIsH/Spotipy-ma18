@@ -1,8 +1,8 @@
 from core.modules.base.album import Album
 from core.modules.base.artist import Artist
 from core.modules.base.track import Track
-from core.modules.data_handling import data
-from core.modules.account.user import User
+from core.datahandling import data
+from core.account.user import User
 from ..logging import logger
 
 
