@@ -1,6 +1,5 @@
-from core.modules.artist import Artist
-from core.modules.album import Album
-from core.modules.track import Track
+from core.modules.base.album import Album
+from core.modules.base.track import Track
 
 
 class Data:

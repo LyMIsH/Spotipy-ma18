@@ -1,7 +1,7 @@
 from core.exceptions import exceptions
-from ..loaded_data.data import Data
+from ..data_handling.data import Data
 from core.logging import logger
-from core.modules.playlist import Playlist
+from core.modules.base.playlist import Playlist
 
 
 class AccountsData:

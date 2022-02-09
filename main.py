@@ -1,5 +1,5 @@
 from core.reading import reader_factory
-from core.modules.loaded_data import data
+from core.modules.data_handling import data
 from core.modules.account import account_managment
 import config
 
