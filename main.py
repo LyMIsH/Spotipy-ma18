@@ -2,7 +2,7 @@ from core.reading import reader_factory
 from core.modules.data_handling import data
 from core.modules.account import account_managment
 import config
-
+from core.modules.data_handling import search
 
 def main():
     reader_factory.JsonReader.load_songs(config.settings["songs_path"])
@@ -20,6 +20,8 @@ def main():
     account_managment.add_to_playlist("NO", tracks)
     account_managment.create_playlist("ABC")
 
+    artists = search.get_artists()
+    _ = 0
     # data.test()
 
 
