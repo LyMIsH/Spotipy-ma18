@@ -21,7 +21,7 @@ class User:
                 f"User {self.username} is free and cannot have more than 20 tracks in playlist")
         else:
             self.playlists[playlist_name].add_tracks(tracks)
-        logger.info(f"Added track {[track.name for track in tracks]} to {playlist_name}")
+        logger.info(f"Added tracks {[track.name for track in tracks]} to {playlist_name}")
 
     def create_playlist(self, playlist_name):
         if playlist_name in self.playlists.keys():
