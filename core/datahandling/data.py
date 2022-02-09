@@ -27,10 +27,3 @@ def add_track_data(album: Album, track: Track, artist_list: list):
 
 def add_user_data(user):
     Data.users[user.username] = user
-
-
-def test():
-    artists = Data.artists
-    tracks = Data.tracks
-    albums = Data.albums
-    return

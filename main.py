@@ -29,9 +29,6 @@ def main():
     main_menu.append_item(get_top_tracks_option)
     main_menu.show()
 
-    _ = 0
-   # data.test()
-
 
 if __name__ == "__main__":
     reader_factory.JsonReader.load_songs(config.settings["songs_path"])
