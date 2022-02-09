@@ -17,29 +17,17 @@ def main():
     user = login_option.return_value
     create_playlist_option = FunctionItem("Create playlist", basefunctions.create_playlist_console, [user])
     add_track_option = FunctionItem("Add track to playlist", basefunctions.add_track_console, [user])
+    get_artists_option = FunctionItem("Get artists", print, search.get_artists())
+    get_albums_option = FunctionItem("Get album by artist ID", basefunctions.get_artist_albums_console)
+    get_album_tracks_option = FunctionItem("Get album tracks by ID", basefunctions.get_album_tracks_console)
+    get_top_tracks_option = FunctionItem("Get top 10 tracks by author ID", basefunctions.get_album_tracks_console)
     main_menu.append_item(create_playlist_option)
     main_menu.append_item(add_track_option)
+    main_menu.append_item(get_artists_option)
+    main_menu.append_item(get_albums_option)
+    main_menu.append_item(get_album_tracks_option)
+    main_menu.append_item(get_top_tracks_option)
     main_menu.show()
-
-    tracks = []
-    count = 0
-    for k, v in data.Data.tracks.items():
-        tracks.append(v)
-        count += 1
-        if count == 18:
-            break
-
-    user.add_to_playlist("NO", tracks)
-    user.create_playlist("ABC")
-    user.create_playlist("sdasdasd")
-    user.create_playlist("dasda")
-    user.create_playlist("asdasda")
-    user.add_to_playlist("ABC", tracks)
-
-    artists = search.get_artists()
-    albums = search.get_albums(artists[1].id())
-    top_tracks = search.get_top_artist_tracks(artists[1].id())
-    album_tracks = search.get_album_tracks("2usyeZYdUHKlNHKDKgAYSo")
 
     _ = 0
    # data.test()
