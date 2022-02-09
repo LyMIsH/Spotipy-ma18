@@ -3,13 +3,24 @@ from core.datahandling import data
 from core.account import account_managment
 import config
 from core.datahandling import search
+from consolemenu import *
+from consolemenu.items import *
+from core.uifunctionality import basefunctions
 
 
 def main():
-    reader_factory.JsonReader.load_songs(config.settings["songs_path"])
-    reader_factory.JsonReader.load_users(config.settings["users_path"])
-    user = account_managment.login("Atar Mayner", "1222222")
-    user.create_playlist("NO")
+    login_menu = ConsoleMenu("Spotipy", "Login menu")
+    main_menu = ConsoleMenu("Spotipy", "Main menu")
+    login_option = FunctionItem("Login", basefunctions.login_console, should_exit=True)
+    login_menu.append_item(login_option)
+    login_menu.show()
+    user = login_option.return_value
+    create_playlist_option = FunctionItem("Create playlist", basefunctions.create_playlist_console, [user])
+    add_track_option = FunctionItem("Add track to playlist", basefunctions.add_track_console, [user])
+    main_menu.append_item(create_playlist_option)
+    main_menu.append_item(add_track_option)
+    main_menu.show()
+
     tracks = []
     count = 0
     for k, v in data.Data.tracks.items():
@@ -35,4 +46,6 @@ def main():
 
 
 if __name__ == "__main__":
+    reader_factory.JsonReader.load_songs(config.settings["songs_path"])
+    reader_factory.JsonReader.load_users(config.settings["users_path"])
     main()

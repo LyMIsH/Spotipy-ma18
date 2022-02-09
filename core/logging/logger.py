@@ -24,3 +24,7 @@ def error(msg):
 
 def fatal(msg):
     logging.fatal(msg)
+
+
+def exception(msg):
+    logging.exception(msg)

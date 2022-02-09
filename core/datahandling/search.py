@@ -1,6 +1,7 @@
 from .data import Data
 from core.exceptions import exceptions
 import config
+from core.logging import logger
 
 
 premium = False

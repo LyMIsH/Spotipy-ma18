@@ -24,7 +24,6 @@ def login(username, password):
             search.premium = True
             logger.warning(f"Set user - {username} search type to premium")
     else:
-        logger.error(f"Cannot find user '{username}'")
         raise exceptions.UsernameDoesNotExist(f"Cannot find user '{username}'")
 
     return Data.users[username]
