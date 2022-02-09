@@ -3,7 +3,7 @@ class User:
         self.username = username
         self.password = password
         self.type = account_type
-        self.playlists = set()
+        self.playlists = dict()
 
-    def add_playlist(self, name, tracks):
-        pass
+    def add_playlist(self, playlist):
+        self.playlists[playlist.name] = playlist

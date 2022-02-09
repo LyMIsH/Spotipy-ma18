@@ -2,8 +2,8 @@ import logging
 import config
 
 
-logging.basicConfig(level=logging.DEBUG, filename=config.settings['log_path'], filemode='w',
-                    format='%(levelname)s: %(name)s - %(asctime)s - %(message)s')
+logging.basicConfig(handlers=[logging.FileHandler(config.settings['log_path'], 'w', 'utf-8')],
+                    level=logging.DEBUG, format='%(levelname)s: %(name)s - %(asctime)s - %(message)s')
 
 
 def debug(msg):

@@ -8,3 +8,11 @@ class UserNotLoggedInException(Exception):
 
 class UsernameDoesNotExist(Exception):
     pass
+
+
+class PlaylistAlreadyExists(Exception):
+    pass
+
+
+class PlaylistDoesNotExists(Exception):
+    pass
