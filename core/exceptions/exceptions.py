@@ -16,3 +16,7 @@ class PlaylistAlreadyExists(Exception):
 
 class PlaylistDoesNotExists(Exception):
     pass
+
+
+class IDNotFound(Exception):
+    pass
