@@ -7,9 +7,10 @@ class Data:
     artists = dict()
     tracks = dict()
     albums = dict()
+    users = dict()
 
 
-def add_data(album: Album, track: Track, artist_list: list):
+def add_track_data(album: Album, track: Track, artist_list: list):
     # Album adding
     if album.id() not in Data.albums.keys():
         Data.albums[album.id()] = album
@@ -23,3 +24,14 @@ def add_data(album: Album, track: Track, artist_list: list):
         if artist.id() not in Data.artists.keys():
             Data.artists[artist.id()] = artist
         Data.artists[artist.id()].add_album(album)
+
+
+def add_user_data(user):
+    Data.users[user.username] = user
+
+
+def test():
+    artists = Data.artists
+    tracks = Data.tracks
+    albums = Data.albums
+    return
