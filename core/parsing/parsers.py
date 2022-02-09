@@ -1,10 +1,14 @@
 from core.modules.album import Album
 from core.modules.artist import Artist
 from core.modules.track import Track
+from core.modules.loaded_data import data
 
 
 def parse_track_json(track):
-    artists = list()
+    artists = data.artists
+    albums = data.albums
+    tracks = data.tracks
+
     album = Album(track.album.id, track.album.name)
 
     for artist in track.artists:
@@ -14,4 +18,10 @@ def parse_track_json(track):
 
     track = Track(track.id, track.name, track.popularity)
     album.add_song(track)
-    return track, artists, album
+    data.artists.extend(artists)
+    data.albums.append(album)
+    data.tracks.append(track)
+    print(data.tracks, data.albums, data.artists)
+
+
+
