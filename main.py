@@ -8,8 +8,8 @@ from core.datahandling import search
 def main():
     reader_factory.JsonReader.load_songs(config.settings["songs_path"])
     reader_factory.JsonReader.load_users(config.settings["users_path"])
-    account_managment.login("Rafa", "1222222")
-    account_managment.create_playlist("NO")
+    user = account_managment.login("Rafa", "1222222")
+    user.create_playlist("NO")
     tracks = []
     count = 0
     for k, v in data.Data.tracks.items():
@@ -18,12 +18,12 @@ def main():
         if count == 18:
             break
 
-    account_managment.add_to_playlist("NO", tracks)
-    account_managment.create_playlist("ABC")
-    account_managment.create_playlist("sdasdasd")
-    account_managment.create_playlist("dasda")
-    account_managment.create_playlist("asdasda")
-    account_managment.add_to_playlist("ABC", tracks)
+    user.add_to_playlist("NO", tracks)
+    user.create_playlist("ABC")
+    user.create_playlist("sdasdasd")
+    user.create_playlist("dasda")
+    user.create_playlist("asdasda")
+    user.add_to_playlist("ABC", tracks)
 
     artists = search.get_artists()
     s = artists[1].id()
