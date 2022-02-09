@@ -1,11 +1,10 @@
 from .reader import Reader
-from core.exceptions import exceptions
 from core.parsing import parsers
 import os
 import glob
 import json
 from types import SimpleNamespace
-from core.modules import logger
+from core.logging import logger
 
 
 class JsonReader(Reader):
