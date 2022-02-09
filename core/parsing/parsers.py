@@ -5,23 +5,14 @@ from core.modules.loaded_data import data
 
 
 def parse_track_json(track):
-    artists = data.artists
-    albums = data.albums
-    tracks = data.tracks
-
-    album = Album(track.album.id, track.album.name)
+    artists = list()
 
     for artist in track.artists:
-        artist_object = Artist(artist.id, artist.name)
-        artist_object.add_album(album)
-        artists.append(artist_object)
+        artists.append(Artist(artist.id, artist.name))
 
+    album = Album(track.album.id, track.album.name)
     track = Track(track.id, track.name, track.popularity)
-    album.add_song(track)
-    data.artists.extend(artists)
-    data.albums.append(album)
-    data.tracks.append(track)
-    print(data.tracks, data.albums, data.artists)
+    data.add_data(album, track, artists)
 
 
 

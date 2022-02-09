@@ -7,13 +7,6 @@ import json
 from types import SimpleNamespace
 
 
-def get_reader(name):
-    try:
-        return globals()[name]()
-    except KeyError as e:
-        raise exceptions.ReaderDoesNotExistException("Reader '" + name + "' Does not exist")
-
-
 class JsonReader(Reader):
     @staticmethod
     def load_songs(path):

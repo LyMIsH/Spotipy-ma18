@@ -6,3 +6,6 @@ class Album:
 
     def add_song(self, track_id):
         self.__tracks.add(track_id)
+
+    def id(self):
+        return self.__id

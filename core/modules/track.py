@@ -3,3 +3,6 @@ class Track:
         self.__id = id
         self.name = name
         self.popularity = popularity
+
+    def id(self):
+        return self.__id
