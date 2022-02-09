@@ -23,10 +23,3 @@ def add_data(album: Album, track: Track, artist_list: list):
         if artist.id() not in Data.artists.keys():
             Data.artists[artist.id()] = artist
         Data.artists[artist.id()].add_album(album)
-
-
-def get_data():
-    artists = Data.artists
-    tracks = Data.tracks
-    albums = Data.albums
-    print(Data)
