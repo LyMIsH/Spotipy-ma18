@@ -1,10 +1,11 @@
 import logging
 from pathlib import Path
+import config
 
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-logging.basicConfig(level=logging.DEBUG, filename=f"{Path().absolute()}\\logs.log", filemode='a',
+logging.basicConfig(level=logging.DEBUG, filename=config.settings['log_path'], filemode='a',
                     format='%(levelname)s: %(name)s - %(asctime)s - %(message)s')
 
 
