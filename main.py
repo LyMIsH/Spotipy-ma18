@@ -5,15 +5,7 @@ from core.datahandling import search
 from consolemenu import *
 from consolemenu.items import *
 from core.uifunctionality import consolefunctions
-from flask import Flask
 from core.uifunctionality import restfunctions
-
-
-app = Flask(__name__)
-
-
-def run_app():
-    app.run(host='0.0.0.0', port=5050, use_reloader=False)
 
 
 def main():
@@ -41,4 +33,5 @@ def main():
 if __name__ == "__main__":
     reader_factory.JsonReader.load_songs(config.settings["songs_path"])
     reader_factory.JsonReader.load_users(config.settings["users_path"])
+    threading.Thread(target=restfunctions.start).start()
     main()
