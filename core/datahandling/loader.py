@@ -1,4 +1,3 @@
-from . import data
 from core.reading.reader_factory import JsonReader
 import config
 

@@ -21,14 +21,16 @@ def add_track_data(album: Album, track: Track, artist_list: list):
         Data.albums[album.id()] = album
     Data.albums[album.id()].add_song(track)
 
-    # Track adding
-    Data.tracks[track.id()] = track
-
     # Artists adding
     for artist in artist_list:
         if artist.id() not in Data.artists.keys():
             Data.artists[artist.id()] = artist
+            if artist.genre is not None:
+                track.genres.add(artist.genre)
         Data.artists[artist.id()].add_album(album)
+
+    # Track adding
+    Data.tracks[track.id()] = track
 
 
 def does_user_exists(username):

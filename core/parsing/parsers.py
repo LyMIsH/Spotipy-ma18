@@ -9,7 +9,10 @@ def parse_track_json(track):
     artists = list()
 
     for artist in track.artists:
-        artists.append(Artist(artist.id, artist.name))
+        if hasattr(artist, 'genre'):
+            artists.append(Artist(artist.id, artist.name, artist.genre))
+        else:
+            artists.append(Artist(artist.id, artist.name))
 
     album = Album(track.album.id, track.album.name)
     track = Track(track.id, track.name, track.popularity)

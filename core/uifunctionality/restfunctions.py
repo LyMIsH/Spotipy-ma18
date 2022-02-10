@@ -51,6 +51,15 @@ def get_top_artist_tracks():
     return str(search.get_top_artist_tracks(artist_id, premium=users_by_ip[request.remote_addr].is_premium))
 
 
+@app.route('/toptracks-genre', methods=['GET'])
+def get_top_genre_tracks():
+    if not is_logged(request.remote_addr): return USER_NOT_LOGGED_MESSAGE
+    genre = request.args.get('genre')
+    if genre is None:
+        return "Genre not supplied"
+    return str(search.get_top_genre_tracks(genre, premium=users_by_ip[request.remote_addr].is_premium))
+
+
 @app.route('/albumtracks', methods=['GET'])
 def get_album_tracks():
     if not is_logged(request.remote_addr): return USER_NOT_LOGGED_MESSAGE

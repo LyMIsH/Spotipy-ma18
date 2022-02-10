@@ -43,6 +43,18 @@ def get_top_artist_tracks(artist_id, premium=False):
 
 
 @limiter
+def get_top_genre_tracks(genre, premium=False):
+    genre_tracks = []
+    for track in Data.tracks.values():
+        if genre in track.genres:
+            genre_tracks.append(track)
+
+    genre_tracks.sort(key=lambda track: track.popularity, reverse=True)
+
+    return genre_tracks
+
+
+@limiter
 def get_album_tracks(album_id, premium=False):
     if album_id not in Data.albums.keys():
         raise exceptions.IDNotFound(f"No album match for {album_id}")

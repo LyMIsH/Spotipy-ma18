@@ -20,10 +20,13 @@ def start():
     get_album_tracks_option = FunctionItem("Get album tracks by ID", consolefunctions.get_album_tracks_console, [user])
     get_top_tracks_option = FunctionItem("Get top 10 tracks by artist ID", consolefunctions.get_top_tracks_console,
                                          [user])
+    get_top_genre_tracks_option = FunctionItem("Get top 10 tracks by genre", consolefunctions.get_top_genre_tracks_console,
+                                         [user])
     main_menu.append_item(create_playlist_option)
     main_menu.append_item(add_track_option)
     main_menu.append_item(get_artists_option)
     main_menu.append_item(get_albums_option)
     main_menu.append_item(get_album_tracks_option)
     main_menu.append_item(get_top_tracks_option)
+    main_menu.append_item(get_top_genre_tracks_option)
     main_menu.show()

@@ -32,6 +32,12 @@ def get_top_tracks_console(user):
     print(search.get_top_artist_tracks(artist_id, premium=user.is_premium))
 
 
+def get_top_genre_tracks_console(user):
+    genre = input("Enter genre: ")
+    # Adding check before exception because console menu cannot handle exceptions
+    print(search.get_top_genre_tracks(genre, premium=user.is_premium))
+
+
 def get_artist_albums_console(user):
     artist_id = input("Enter artist ID: ")
     # Adding check before exception because console menu cannot handle exceptions
