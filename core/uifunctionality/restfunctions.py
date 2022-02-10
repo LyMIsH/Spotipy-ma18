@@ -50,13 +50,22 @@ def get_albums():
     return str(search.get_albums(artist_id, premium=user.is_premium))
 
 
-@app.route('/albums', methods=['GET'])
+@app.route('/toptracks', methods=['GET'])
 @is_logged
-def get_albums():
+def get_top_artist_tracks():
     artist_id = request.args.get('id')
     if artist_id is None:
         return "Artist id not supplied"
-    return str(search.get_albums(artist_id, premium=user.is_premium))
+    return str(search.get_top_artist_tracks(artist_id, premium=user.is_premium))
+
+
+@app.route('/albumtracks', methods=['GET'])
+@is_logged
+def get_album_tracks():
+    album_id = request.args.get('id')
+    if album_id is None:
+        return "Album id not supplied"
+    return str(search.get_album_tracks(album_id, premium=user.is_premium))
 
 
 def start():
