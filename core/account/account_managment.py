@@ -20,7 +20,7 @@ def login(username, password):
     if username in Data.users.keys():
         AccountsData.logged_users[username] = Data.users[username]
         logger.info(f"User {username} logged in")
-        if Data.users[username].type == "Premium" or is_artist(username):
+        if Data.users[username].is_premium or is_artist(username):
             search.premium = True
             logger.warning(f"Set user - {username} search type to premium")
     else:

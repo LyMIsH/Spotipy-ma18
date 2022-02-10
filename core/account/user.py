@@ -4,10 +4,10 @@ from core.modules.base.playlist import Playlist
 
 
 class User:
-    def __init__(self, username, password, account_type):
+    def __init__(self, username, password, premium):
         self.username = username
         self.password = password
-        self.type = account_type
+        self.is_premium = premium
         self.playlists = dict()
 
     def add_playlist(self, playlist):
@@ -16,7 +16,7 @@ class User:
     def add_to_playlist(self, playlist_name, tracks):
         if playlist_name not in self.playlists.keys():
             raise exceptions.PlaylistDoesNotExists(f'{playlist_name}')
-        if len(self.playlists[playlist_name].tracks) + len(tracks) > 20 and self.type == "Free":
+        if len(self.playlists[playlist_name].tracks) + len(tracks) > 20 and not self.is_premium:
             raise exceptions.FreeUserException(
                 f"User {self.username} is free and cannot have more than 20 tracks in playlist")
         else:
@@ -26,7 +26,7 @@ class User:
     def create_playlist(self, playlist_name):
         if playlist_name in self.playlists.keys():
             raise exceptions.PlaylistAlreadyExists(f"{playlist_name}")
-        if len(self.playlists) == 5 and self.type == "Free":
+        if len(self.playlists) == 5 and not self.is_premium:
             raise exceptions.FreeUserException(f"User {self.username} is free and cannot have more than 5 playlists")
 
         playlist = Playlist(playlist_name)

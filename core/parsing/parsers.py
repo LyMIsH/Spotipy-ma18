@@ -20,7 +20,7 @@ def parse_track_json(track):
 
 def parse_users_json(users):
     for user in users:
-        data.add_user_data(User(user.username, user.password, user.type))
+        data.add_user_data(User(user.username, user.password, user.premium))
         logger.debug(f"Loaded user {user.username}")
 
 

@@ -1,12 +1,19 @@
+import threading
 from core.reading import reader_factory
-from core.datahandling import data
-from core.account import account_managment
 import config
 from core.datahandling import search
 from consolemenu import *
 from consolemenu.items import *
 from core.uifunctionality import consolefunctions
 from flask import Flask
+from core.uifunctionality import restfunctions
+
+
+app = Flask(__name__)
+
+
+def run_app():
+    app.run(host='0.0.0.0', port=5050, use_reloader=False)
 
 
 def main():
