@@ -28,3 +28,7 @@ class FreeUserException(Exception):
 
 class IncorrectCredentialsError(Exception):
     pass
+
+
+class SignupError(Exception):
+    pass

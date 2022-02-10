@@ -8,7 +8,9 @@ def start():
     login_menu = ConsoleMenu("Spotipy", "Login menu")
     main_menu = ConsoleMenu("Spotipy", "Main menu")
     login_option = FunctionItem("Login", consolefunctions.login_console, should_exit=True)
+    signup_option = FunctionItem("Sign up", consolefunctions.signup_console)
     login_menu.append_item(login_option)
+    login_menu.append_item(signup_option)
     login_menu.show()
     user = login_option.return_value
     create_playlist_option = FunctionItem("Create playlist", consolefunctions.create_playlist_console, [user])

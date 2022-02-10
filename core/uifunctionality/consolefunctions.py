@@ -9,6 +9,13 @@ def login_console():
     return account_managment.login(username, password)
 
 
+def signup_console():
+    username = input("username: ")
+    password = input("password: ")
+
+    return account_managment.signup(username, password)
+
+
 def create_playlist_console(user):
     name = input("Name: ")
     user.create_playlist(name)
