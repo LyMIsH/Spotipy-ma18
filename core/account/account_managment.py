@@ -1,7 +1,8 @@
 from core.exceptions import exceptions
 from core.datahandling.data import Data
+from core.account.user import User
 from core.logging import logger
-from core.datahandling.data import load_user_data
+from core.datahandling.data import load_user_data, save_user_data, Data
 
 
 def is_artist(username):
@@ -13,16 +14,15 @@ def is_artist(username):
 
 
 def login(username, password):
-    if username in Data.users.keys():
-        user = Data.users[username]
-        if password != user.password:
-            raise exceptions.IncorrectCredentialsError("Username or password incorrect")
-        if is_artist(username):
-            Data.users[username].is_premium = True
-
+    user = load_user_data(username)
+    if password != user.password:
+        raise exceptions.IncorrectCredentialsError("Username or password incorrect")
+    if is_artist(username):
+        Data.users[username].is_premium = True
         logger.info(f"User {username} logged in")
-    else:
-        raise exceptions.UsernameDoesNotExist(f"Cannot find user '{username}'")
 
-    load_user_data(username)  # Load data only when user logged in
-    return Data.users[username]
+    return user
+
+
+# def signup(username, password):
+#     save_user_credentials(User(username, password, False))

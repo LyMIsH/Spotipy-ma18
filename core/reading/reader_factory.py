@@ -12,14 +12,8 @@ class JsonReader(Reader):
     def load_songs(path):
         logger.debug(f"Reading json from {path}")
         for filename in glob.glob(os.path.join(path, '*.json')):
-            with open(os.path.join(path, filename), 'r') as file:  # open in readonly mode
+            with open(os.path.join(path, filename), 'r', encoding='utf-8') as file:  # open in readonly mode
                 # Parse JSON into an object with attributes corresponding to dict keys.
                 json_object = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
                 parsers.parse_track_json(json_object.track)
 
-    @staticmethod
-    def load_users(path):
-        with open(path, "r") as file:
-            logger.debug(f"Reading json from {path}")
-            users = json.load(file, object_hook=lambda d: SimpleNamespace(**d))
-            parsers.parse_users_json(users)

@@ -2,7 +2,6 @@ from core.modules.base.album import Album
 from core.modules.base.artist import Artist
 from core.modules.base.track import Track
 from core.datahandling import data
-from core.account.user import User
 from ..logging import logger
 
 
@@ -16,8 +15,3 @@ def parse_track_json(track):
     track = Track(track.id, track.name, track.popularity)
     data.add_track_data(album, track, artists)
     logger.debug(f"Loaded track {track.name}")
-
-
-def parse_users_json(users):
-    for user in users:
-        data.add_user_data(User(user.username, user.password, user.premium))

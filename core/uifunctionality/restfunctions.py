@@ -12,9 +12,7 @@ USER_NOT_LOGGED_MESSAGE = "Not logged in"
 
 
 def is_logged(addr):
-    if addr not in users_by_ip.keys():
-        return False
-    return True
+    return addr in users_by_ip.keys()
 
 
 @app.route('/login', methods=['GET', 'POST'])

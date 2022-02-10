@@ -1,15 +1,16 @@
 import threading
-from core.reading import reader_factory
+from core.datahandling.loader import load_songs
 import config
 from core.uifunctionality import restfunctions, menu
+from core.account import account_managment
 
 
 def main():
+    # account_managment.signup("Ran", "111")
     menu.start()
 
 
 if __name__ == "__main__":
-    reader_factory.JsonReader.load_songs(config.settings["songs_path"])
-    reader_factory.JsonReader.load_users(config.settings["users_path"])
+    load_songs()
     threading.Thread(target=restfunctions.start).start()
     main()

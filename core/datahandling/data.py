@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import pickle
 from core.logging import logger
+from core.exceptions import exceptions
 
 
 class Data:
@@ -36,11 +37,9 @@ def load_user_data(username):
         with open(os.path.join(config.settings["users_data_path"], username), "rb") as file:
             Data.users[username] = pickle.load(file)
             logger.info(f"Loaded user {username} from pickle")
-
-
-def add_user_data(user):
-    Data.users[user.username] = user
-    logger.info(f"Loaded user {user.username}")
+            return Data.users[username]
+    else:
+        raise exceptions.UsernameDoesNotExist(f"User {username} not found")
 
 
 def save_user_data(user):
