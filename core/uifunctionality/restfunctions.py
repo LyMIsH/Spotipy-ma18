@@ -3,7 +3,7 @@ from flask import request
 from core.datahandling import search
 from core.account import account_managment
 from core.logging import logger
-from flask import jsonify
+import config
 
 
 app = Flask(__name__)
@@ -69,4 +69,4 @@ def get_album_tracks():
 
 
 def start():
-    app.run(host='0.0.0.0', port=5050, use_reloader=False, debug=True)
+    app.run(host=config.settings['rest_ip'], port=config.settings['rest_port'], use_reloader=False, debug=True)
