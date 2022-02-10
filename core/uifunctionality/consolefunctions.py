@@ -15,34 +15,34 @@ def create_playlist_console(user):
     _ = 0
 
 
-def get_top_tracks_console():
+def get_top_tracks_console(user):
     artist_id = input("Enter artist ID: ")
     # Adding check before exception because console menu cannot handle exceptions
     if artist_id not in data.Data.artists.keys():
         print(f"ID {artist_id} not found")
         return
 
-    print(search.get_top_artist_tracks(artist_id))
+    print(search.get_top_artist_tracks(artist_id, premium=user.is_premium))
 
 
-def get_artist_albums_console():
+def get_artist_albums_console(user):
     artist_id = input("Enter artist ID: ")
     # Adding check before exception because console menu cannot handle exceptions
     if artist_id not in data.Data.artists.keys():
         print(f"ID {artist_id} not found")
         return
 
-    print(search.get_albums(artist_id))
+    print(search.get_albums(artist_id, premium=user.is_premium))
 
 
-def get_album_tracks_console():
+def get_album_tracks_console(user):
     album_id = input("Enter album ID: ")
     # Adding check before exception because console menu cannot handle exceptions
     if album_id not in data.Data.albums.keys():
         print(f"ID {album_id} not found")
         return
 
-    print(search.get_album_tracks(album_id))
+    print(search.get_album_tracks(album_id, premium=user.is_premium))
 
 
 def add_track_console(user):

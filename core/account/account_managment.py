@@ -19,10 +19,10 @@ def is_artist(username):
 def login(username, password):
     if username in Data.users.keys():
         AccountsData.logged_users[username] = Data.users[username]
+        if is_artist(username):
+            Data.users[username].is_premium = True
+
         logger.info(f"User {username} logged in")
-        if Data.users[username].is_premium or is_artist(username):
-            search.premium = True
-            logger.warning(f"Set user - {username} search type to premium")
     else:
         raise exceptions.UsernameDoesNotExist(f"Cannot find user '{username}'")
 
