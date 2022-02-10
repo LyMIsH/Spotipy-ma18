@@ -4,6 +4,8 @@ import config
 import os
 from pathlib import Path
 import pickle
+from core.logging import logger
+
 
 
 class Data:
@@ -34,10 +36,13 @@ def add_user_data(user):
     if user_data.exists():
         with open(os.path.join(config.settings["users_data_path"], user.username), "rb") as file:
             Data.users[user.username] = pickle.load(file)
+            logger.info(f"Loaded user {user.username} from pickle")
     else:
         Data.users[user.username] = user
+        logger.info(f"Loaded user {user.username}")
 
 
 def save_user_data(user):
     with open(os.path.join(config.settings["users_data_path"], user.username), "wb") as file:
         pickle.dump(user, file)
+        logger.info(f"Wrote user {user.username} to pickle")
