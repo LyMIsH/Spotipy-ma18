@@ -39,7 +39,7 @@ def get_top_artist_tracks(artist_id, premium=False):
         tracks.extend(list(album.tracks.values()))
     tracks.sort(key=lambda track: track.popularity, reverse=True)
 
-    return tracks
+    return tracks[0:config.settings['top_search_result_number']]
 
 
 @limiter
@@ -51,7 +51,7 @@ def get_top_genre_tracks(genre, premium=False):
 
     genre_tracks.sort(key=lambda track: track.popularity, reverse=True)
 
-    return genre_tracks
+    return genre_tracks[0:config.settings['top_search_result_number']]
 
 
 @limiter

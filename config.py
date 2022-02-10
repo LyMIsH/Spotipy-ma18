@@ -4,5 +4,6 @@ settings = dict(
     users_data_path=r"E:\Natanya\GitProjects\Spotipy\users",
     free_user_result_limit=5,
     rest_port=5050,
+    top_search_result_number=10,
     rest_ip='0.0.0.0'
 )
