@@ -6,6 +6,7 @@ from core.datahandling import search
 from consolemenu import *
 from consolemenu.items import *
 from core.uifunctionality import consolefunctions
+from flask import Flask
 
 
 def main():
