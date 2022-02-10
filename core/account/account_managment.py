@@ -1,7 +1,7 @@
 from core.exceptions import exceptions
 from core.datahandling.data import Data
 from core.logging import logger
-from core.datahandling import search
+from core.datahandling.data import load_user_data
 
 
 class AccountsData:
@@ -26,4 +26,5 @@ def login(username, password):
     else:
         raise exceptions.UsernameDoesNotExist(f"Cannot find user '{username}'")
 
+    load_user_data(username) # Load data only when user logged in
     return Data.users[username]

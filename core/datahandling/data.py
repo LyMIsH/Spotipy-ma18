@@ -31,15 +31,17 @@ def add_track_data(album: Album, track: Track, artist_list: list):
         Data.artists[artist.id()].add_album(album)
 
 
-def add_user_data(user):
-    user_data = Path(os.path.join(config.settings["users_data_path"], user.username))
+def load_user_data(username):
+    user_data = Path(os.path.join(config.settings["users_data_path"], username))
     if user_data.exists():
-        with open(os.path.join(config.settings["users_data_path"], user.username), "rb") as file:
-            Data.users[user.username] = pickle.load(file)
-            logger.info(f"Loaded user {user.username} from pickle")
-    else:
-        Data.users[user.username] = user
-        logger.info(f"Loaded user {user.username}")
+        with open(os.path.join(config.settings["users_data_path"], username), "rb") as file:
+            Data.users[username] = pickle.load(file)
+            logger.info(f"Loaded user {username} from pickle")
+
+
+def add_user_data(user):
+    Data.users[user.username] = user
+    logger.info(f"Loaded user {user.username}")
 
 
 def save_user_data(user):
