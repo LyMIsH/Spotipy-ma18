@@ -7,7 +7,6 @@ import pickle
 from core.logging import logger
 
 
-
 class Data:
     artists = dict()
     tracks = dict()
