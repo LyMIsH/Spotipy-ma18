@@ -24,3 +24,7 @@ class IDNotFound(Exception):
 
 class FreeUserException(Exception):
     pass
+
+
+class IncorrectCredentialsError(Exception):
+    pass
