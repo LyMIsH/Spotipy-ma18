@@ -1,6 +1,7 @@
 from core.exceptions import exceptions
 from core.logging import logger
 from core.modules.base.playlist import Playlist
+from core.datahandling.data import save_user_data
 
 
 class User:
@@ -12,6 +13,7 @@ class User:
 
     def add_playlist(self, playlist):
         self.playlists[playlist.name] = playlist
+        save_user_data(self)
 
     def add_to_playlist(self, playlist_name, tracks):
         if playlist_name not in self.playlists.keys():
@@ -21,6 +23,7 @@ class User:
                 f"User {self.username} is free and cannot have more than 20 tracks in playlist")
         else:
             self.playlists[playlist_name].add_tracks(tracks)
+            save_user_data(self)
         logger.info(f"Added tracks {[track.name for track in tracks]} to {playlist_name}")
 
     def create_playlist(self, playlist_name):

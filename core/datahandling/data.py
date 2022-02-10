@@ -1,5 +1,9 @@
 from core.modules.base.album import Album
 from core.modules.base.track import Track
+import config
+import os
+from pathlib import Path
+import pickle
 
 
 class Data:
@@ -26,4 +30,14 @@ def add_track_data(album: Album, track: Track, artist_list: list):
 
 
 def add_user_data(user):
-    Data.users[user.username] = user
+    user_data = Path(os.path.join(config.settings["users_data_path"], user.username))
+    if user_data.exists():
+        with open(os.path.join(config.settings["users_data_path"], user.username), "rb") as file:
+            Data.users[user.username] = pickle.load(file)
+    else:
+        Data.users[user.username] = user
+
+
+def save_user_data(user):
+    with open(os.path.join(config.settings["users_data_path"], user.username), "wb") as file:
+        pickle.dump(user, file)

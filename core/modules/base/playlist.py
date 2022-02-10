@@ -1,4 +1,4 @@
-from .track import Track
+import json
 
 
 class Playlist:
